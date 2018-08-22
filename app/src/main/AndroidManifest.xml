@@ -28,11 +28,6 @@
             android:name=".ui.TransitionActivity"
             android:screenOrientation="portrait"
             android:theme="@style/ViewBigPicTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.movie.TestActivity"

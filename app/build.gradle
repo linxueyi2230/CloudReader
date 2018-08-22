@@ -4,7 +4,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "com.example.jingbin.cloudreader"
+        applicationId "com.ego.cloudreader"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 20
@@ -13,6 +13,11 @@ android {
         renderscriptTargetApi 19
         renderscriptSupportModeEnabled true
         multiDexEnabled true
+
+        manifestPlaceholders = [
+                jpush_appkey : '836c6defdfbf84af0adcb1cf'
+        ]
+
 
         ndk {
             //选择要添加的对应cpu类型的.so库。
@@ -28,23 +33,23 @@ android {
     }
 
     // 注释下面代码(签名配置)
-    signingConfigs {
-        if (propertyHaveSigningConfigs) {
-            debug {
-                storeFile file(pStoreFile)
-                storePassword pStorePassword
-                keyAlias pKeyAlias
-                keyPassword pKeyPassword
-            }
-
-            release {
-                storeFile file(pStoreFile)
-                storePassword pStorePassword
-                keyAlias pKeyAlias
-                keyPassword pKeyPassword
-            }
-        }
-    }
+//    signingConfigs {
+//        if (propertyHaveSigningConfigs) {
+//            debug {
+//                storeFile file(pStoreFile)
+//                storePassword pStorePassword
+//                keyAlias pKeyAlias
+//                keyPassword pKeyPassword
+//            }
+//
+//            release {
+//                storeFile file(pStoreFile)
+//                storePassword pStorePassword
+//                keyAlias pKeyAlias
+//                keyPassword pKeyPassword
+//            }
+//        }
+//    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -58,6 +63,12 @@ android {
     // https://github.com/ReactiveX/RxJava/issues/4445
     packagingOptions {
         exclude 'META-INF/rxjava.properties'
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
     }
 }
 dependencies {
@@ -100,4 +111,5 @@ dependencies {
     // bugly start
     implementation 'com.tencent.bugly:crashreport:2.6.6.1'
     implementation 'com.tencent.bugly:nativecrashreport:3.3.1'
+    implementation (name:'shadow-v1.1.1',ext:'aar')
 }

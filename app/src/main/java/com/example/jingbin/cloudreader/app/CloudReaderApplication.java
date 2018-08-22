@@ -4,7 +4,10 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.support.multidex.MultiDexApplication;
 
+import com.ego.shadow.Shadow;
 import com.example.http.HttpUtils;
+import com.example.jingbin.cloudreader.MainActivity;
+import com.example.jingbin.cloudreader.R;
 import com.example.jingbin.cloudreader.utils.DebugUtil;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -36,6 +39,8 @@ public class CloudReaderApplication extends MultiDexApplication{
         CrashReport.initCrashReport(getApplicationContext(), "3977b2d86f", DebugUtil.DEBUG);
 
         initTextSize();
+        Shadow.splash = R.drawable.img_transition_default;
+        Shadow.init("1808051020", MainActivity.class);
     }
 
     /**
